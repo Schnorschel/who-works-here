@@ -6,7 +6,54 @@ html {
   height: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   min-height: 100%;
+}
+
+.navCont {
+  display: flex;
+  list-style-type: none;
+}
+
+.navElem {
+  padding: 0 5px 0 0;
+}
+
+.employeePreviewCont {
+  width: 12.5%;
+}
+
+.allEmployeesCont {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  width: 60px;
+}
+
+.employeeDetailCont {
+  display: flex;
+  flex-wrap: wrap;
+  border: solid 1px black;
+}
+
+.dataLabel {
+  width: 30%;
+  text-align: right;
+  padding-right: 5px;
+  font-weight: bold;
+}
+
+.dataValue {
+  width: 70%;
+}
+
+.dataItem {
+  margin-bottom: 3px;
 }
