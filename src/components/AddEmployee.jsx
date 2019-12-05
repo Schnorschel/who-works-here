@@ -12,7 +12,7 @@ const AddEmployee = () => {
     const apiURL = 'https://sdg-staff-directory-app.herokuapp.com/api/oilers/Employees/'
     const resp = await axios.post(apiURL,employeeData)
     if (resp.status !== 200) {
-      console.log('status' + resp.status)
+      console.log('status: ' + resp.status)
       return
     }
     setEmployeeId(resp.data.id)

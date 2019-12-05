@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 const EmployeeDetail = props => {
   const [employeeData, setEmployeeData] = useState()
+  const [toDeleteEmployee, setToDeleteEmployee] = useState(false)
 
   const getEmployee = async () => {
     // prettier-ignore
@@ -16,8 +18,13 @@ const EmployeeDetail = props => {
     getEmployee()
   }, [])
 
+  const handleDelete = e => {
+    setToDeleteEmployee(true)
+  }
+
   // prettier-ignore
   return <>
+    {toDeleteEmployee ? <Redirect to={`/del-employee/${props.match.params.id}`} /> : null }
     {employeeData && 
     <div className="employeeDetailCont">
       <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section>
@@ -38,6 +45,7 @@ const EmployeeDetail = props => {
       <section className="dataLabel dataItem">Emergency contact address:</section><section className="dataValue dataItem">{employeeData.emergencyContactAddress}</section>
       <section className="dataLabel dataItem">PTO hours:</section><section className="dataValue dataItem">{employeeData.ptoHours}</section>
       <section className="dataLabel dataItem">Profile image URL:</section><section className="dataValue dataItem">{employeeData.profileImage}</section>
+      <section className="dataLabel dataItem"><button onClick={handleDelete}>Delete employee</button></section><section className="dataValue dataItem"><button>Edit employee</button></section>
     </div>}
   </>
 }

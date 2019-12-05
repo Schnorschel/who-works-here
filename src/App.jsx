@@ -4,6 +4,8 @@ import EmployeeDetail from './components/EmployeeDetail'
 import AddEmployee from './components/AddEmployee'
 import Employees from './components/Employees'
 import NotFound from './pages/NotFound'
+import DeleteEmployee from './components/DeleteEmployee'
+import UpdateEmployee from './components/UpdateEmployee'
 
 const App = () => {
   return (
@@ -16,16 +18,19 @@ const App = () => {
               <Link to="/">All Employees</Link>
             </li>
             <li className="navElem">
-              <Link to="/add-employees">Add Employee</Link>
+              <Link to="/add-employee">Add Employee</Link>
             </li>
           </ul>
         </nav>
       </header>
+      {/* prettier-ignore */}
       <Switch>
         <Route exact path="/" component={Employees}></Route>
         <Route exact path="/employee/:id" component={EmployeeDetail}></Route>
-        <Route exact path="/add-employees" component={AddEmployee}></Route>
-        <Route path="*" component={NotFound}></Route>
+        <Route exact path="/del-employee/:id" component={DeleteEmployee} ></Route>
+        <Route exact path="/add-employee" component={AddEmployee}></Route>
+        <Route exact path="/upd-employee/:id" component={UpdateEmployee} ></Route>
+        }<Route path="*" component={NotFound}></Route>
       </Switch>
     </Router>
   )
