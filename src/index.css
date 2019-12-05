@@ -62,3 +62,7 @@ img {
   width: 100%;
   border: 1px solid black;
 }
+
+input[type='text'] {
+  width: 200px;
+}
