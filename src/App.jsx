@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import EmployeeDetail from './components/EmployeeDetail'
-// import Page2 from './pages/Page2'
+import AddEmployee from './components/AddEmployee'
 import Employees from './components/Employees'
 import NotFound from './pages/NotFound'
 
@@ -24,7 +24,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Employees}></Route>
         <Route exact path="/employee/:id" component={EmployeeDetail}></Route>
-        {/* <Route exact path="/add-employees" component={AddEmployees}></Route> */}
+        <Route exact path="/add-employees" component={AddEmployee}></Route>
         <Route path="*" component={NotFound}></Route>
       </Switch>
     </Router>

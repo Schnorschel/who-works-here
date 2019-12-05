@@ -18,8 +18,9 @@ const EmployeeDetail = props => {
 
   // prettier-ignore
   return <>
-     {employeeData && <div className="employeeDetailCont">
-     <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section>
+    {employeeData && 
+    <div className="employeeDetailCont">
+      <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section>
       <section className="dataLabel dataItem">Name:</section><section className="dataValue dataItem">{employeeData.firstName} {employeeData.lastName}</section>
       <section className="dataLabel dataItem">Full time:</section><section className="dataValue dataItem">{ employeeData.isFullTime ? 'Yes' : 'No'}</section>
       <section className="dataLabel dataItem">Birthday:</section><section className="dataValue dataItem">{employeeData.birthday}</section>
@@ -37,7 +38,7 @@ const EmployeeDetail = props => {
       <section className="dataLabel dataItem">Emergency contact address:</section><section className="dataValue dataItem">{employeeData.emergencyContactAddress}</section>
       <section className="dataLabel dataItem">PTO hours:</section><section className="dataValue dataItem">{employeeData.ptoHours}</section>
       <section className="dataLabel dataItem">Profile image URL:</section><section className="dataValue dataItem">{employeeData.profileImage}</section>
-  </div>}
+    </div>}
   </>
 }
 
