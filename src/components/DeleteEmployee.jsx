@@ -6,7 +6,7 @@ const DeleteEmployee = props => {
 
   const delEmployee = async () => {
     // prettier-ignore
-    const apiURL = `https://sdg-staff-directory-app.herokuapp.com/api/oilers/Employees/${props.match.params.id}`
+    const apiURL = `https://sdg-staff-directory-app.herokuapp.com/api/${props.match.params.bizName}/Employees/${props.match.params.id}`
     const resp = await axios.delete(apiURL)
     if (resp.status !== 200) {
       console.log('status: ' + resp.status)

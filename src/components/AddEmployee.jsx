@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
-const AddEmployee = () => {
+const AddEmployee = props => {
   const [employeeData, setEmployeeData] = useState({ id: 0, isFullTime: true })
   const [employeeId, setEmployeeId] = useState()
   const [toEmployeeDetail, setToEmployeeDetail] = useState(false)
+  const [currentBusinessName, setCurrentBusinessName] = useState()
 
   //prettier-ignore
   const addNewEmployee = async () => {
-    const apiURL = 'https://sdg-staff-directory-app.herokuapp.com/api/oilers/Employees/'
+    const apiURL = `https://sdg-staff-directory-app.herokuapp.com/api/${props.bizName}/Employees/`
+    console.log('Attempting to call: ' + apiURL)
     const resp = await axios.post(apiURL,employeeData)
     if (resp.status !== 200) {
       console.log('status: ' + resp.status)
@@ -35,11 +37,16 @@ const AddEmployee = () => {
     addNewEmployee()
   }
 
+  useEffect(() => {
+    setCurrentBusinessName(props.bizName)
+  }, [])
+
   //prettier-ignore
   return (
     <>
-      {toEmployeeDetail ? <Redirect to={`/employee/${employeeId}`} /> : typeof employeeId === 'undefined' ? null : <div>An error occurred.</div>}
+      {toEmployeeDetail ? <Redirect to={`/company/${currentBusinessName}/employee/${employeeId}`} /> : typeof employeeId === 'undefined' ? null : <div>An error occurred.</div>}
       <form onSubmit={handleSubmit}>
+          Business Name: {props.bizName}
         <div className="employeeDetailCont">
           {/* <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section> */}
           <section className="dataLabel dataItem">First name:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="firstName" value={employeeData.firstName} /></section>

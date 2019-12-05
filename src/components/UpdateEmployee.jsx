@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import BusinessContext from './BusinessContext'
 
-const UpdatEmployee = props => {
+const UpdateEmployee = props => {
   const [employeeData, setEmployeeData] = useState({})
   const [employeeId, setEmployeeId] = useState()
   const [toEmployeeDetail, setToEmployeeDetail] = useState(false)
+  const bizName = React.useContext(BusinessContext)
 
   //prettier-ignore
-  const addNewEmployee = async () => {
-    const apiURL = 'https://sdg-staff-directory-app.herokuapp.com/api/oilers/Employees/'
-    const resp = await axios.post(apiURL,employeeData)
-    if (resp.status !== 200) {
-      console.log('status: ' + resp.status)
-      return
-    }
-    setEmployeeId(resp.data.id)
-    setToEmployeeDetail(true)
-  }
+  // const addNewEmployee = async () => {
+  //   const apiURL = `https://sdg-staff-directory-app.herokuapp.com/api/${bizName}/Employees/`
+  //   const resp = await axios.post(apiURL,employeeData)
+  //   if (resp.status !== 200) {
+  //     console.log('status: ' + resp.status)
+  //     return
+  //   }
+  //   setEmployeeId(resp.data.id)
+  //   setToEmployeeDetail(true)
+  // }
 
   const getEmployee = async () => {
     // prettier-ignore
-    const apiURL = `https://sdg-staff-directory-app.herokuapp.com/api/oilers/Employees/${props.match.params.id}`
+    const apiURL = `https://sdg-staff-directory-app.herokuapp.com/api/${props.match.params.bizName}/Employees/${props.match.params.id}`
     console.log('Attempting to call: ' + apiURL)
     const resp = await axios.get(apiURL)
     console.log(resp.data)
@@ -30,7 +32,7 @@ const UpdatEmployee = props => {
 
   const updateEmployee = async () => {
     // prettier-ignore
-    const apiURL = `https://sdg-staff-directory-app.herokuapp.com/api/oilers/Employees/${props.match.params.id}`
+    const apiURL = `https://sdg-staff-directory-app.herokuapp.com/api/${props.match.params.bizName}/Employees/${props.match.params.id}`
     const resp = await axios.put(apiURL, employeeData)
     console.log(resp.data)
     setToEmployeeDetail(resp.data)
@@ -59,7 +61,7 @@ const UpdatEmployee = props => {
   //prettier-ignore
   return (
     <>
-      {toEmployeeDetail ? <Redirect to={`/employee/${props.match.params.id}`} /> : typeof employeeId === 'undefined' ? null : <div>An error occurred.</div>}
+      {toEmployeeDetail ? <Redirect to={`/company/${props.match.params.bizName}/employee/${props.match.params.id}`} /> : typeof employeeId === 'undefined' ? null : <div>An error occurred.</div>}
       <form onSubmit={handleSubmit}>
         <div className="employeeDetailCont">
           {/* <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section> */}
@@ -92,4 +94,4 @@ const UpdatEmployee = props => {
       )
 }
 
-export default UpdatEmployee
+export default UpdateEmployee

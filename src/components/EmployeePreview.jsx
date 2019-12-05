@@ -5,7 +5,7 @@ const EmployeePreview = props => {
   return (
     // prettier-ignore
     <div className="employeePreviewCont">
-        <img src={props.profileImage} alt="" /> <Link to={`/employee/${props.id}`}>{props.firstName} {props.lastName}</Link>, {props.jobTitle}
+        <img src={props.profileImage} alt="" /> <Link to={{pathname: `/company/${props.bizName}/employee/${props.id}`, state: {bizName: props.bizName}}}>{props.firstName} {props.lastName}</Link>, {props.jobTitle}
     </div>
   )
 }
