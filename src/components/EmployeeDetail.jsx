@@ -42,6 +42,7 @@ const EmployeeDetail = props => {
       {toUpdateEmployee ? <Redirect to={`/company/` + encodeURIComponent(props.match.params.bizName) + `/upd-employee/${props.match.params.id}`} /> : null}
       {employeeData && 
       <div className="employeeDetailCont">
+        {employeeData.profileImage && employeeData.profileImage.includes('.') && <><section className="dataLabel dataItem">&nbsp;</section><section className="dataValue dataItem"><img className="updateImage" src={employeeData.profileImage} /></section></>}
         <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section>
         <section className="dataLabel dataItem">Name:</section><section className="dataValue dataItem">{employeeData.firstName} {employeeData.lastName}</section>
         <section className="dataLabel dataItem">Full time:</section><section className="dataValue dataItem">{ employeeData.isFullTime ? 'Yes' : 'No'}</section>

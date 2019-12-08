@@ -66,7 +66,7 @@ const UpdateEmployee = props => {
         <div className="employeeDetailCont">
           {/* <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section> */}
           <input type="hidden" name="id" value={props.match.params.id}></input>
-          {employeeData.profileImage && <><section className="dataLabel dataItem">&nbsp;</section><section className="dataValue dataItem"><img className="updateImage" src={employeeData.profileImage} /></section></>}
+          {employeeData.profileImage && employeeData.profileImage.includes('.') && <><section className="dataLabel dataItem">&nbsp;</section><section className="dataValue dataItem"><img className="updateImage" src={employeeData.profileImage} /></section></>}
           <section className="dataLabel dataItem">First name:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="firstName" value={employeeData.firstName} /></section>
           <section className="dataLabel dataItem">Last name:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="lastName" value={employeeData.lastName} /></section>
           <section className="dataLabel dataItem">Full time:</section><section className="dataValue dataItem"><select name="isFullTime" onChange={handleUpdateTextField} value={employeeData.isFullTime}><option value="true">Yes</option><option value="false">No</option></select></section>

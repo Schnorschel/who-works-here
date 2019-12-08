@@ -6,7 +6,7 @@ const EmployeePreview = props => {
     // prettier-ignore
     <div className="employeePreviewCont">
       <section className="imgCont">
-        <img src={props.profileImage} alt="" /> 
+        {props.profileImage && props.profileImage.includes('.') && <img src={props.profileImage} alt="" /> }
       </section>
       <section className="nameCont">
         <span className="emplName"><Link to={{pathname: `/company/` + encodeURIComponent(props.bizName) + `/employee/${props.id}`, state: {bizName: props.bizName}}}>{props.firstName} {props.lastName}</Link></span><span className="emplId">#{props.id}</span>
