@@ -36,6 +36,7 @@ const Employees = props => {
     // prettier-ignore
     <>
         <section className="businessesCont">
+          <span>Company: </span>
           <select name="businesses" value={props.bizName} onChange={props.handleUpdateBizName}>
                       {businesses.map((biz, index) => {
                         return (
@@ -52,6 +53,7 @@ const Employees = props => {
                 id={employee.id} 
                 firstName={employee.firstName} 
                 lastName={employee.lastName} 
+                isFullTime={employee.isFullTime}
                 jobTitle={employee.jobTitle} 
                 profileImage={employee.profileImage}
                 bizName={props.bizName} /> )})}

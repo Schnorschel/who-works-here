@@ -46,7 +46,7 @@ const AddEmployee = props => {
     <>
       {toEmployeeDetail ? <Redirect to={`/company/${currentBusinessName}/employee/${employeeId}`} /> : typeof employeeId === 'undefined' ? null : <div>An error occurred.</div>}
       <form onSubmit={handleSubmit}>
-          Business Name: {props.bizName}
+          Company Name: {props.bizName}
         <div className="employeeDetailCont">
           {/* <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section> */}
           <section className="dataLabel dataItem">First name:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="firstName" value={employeeData.firstName} /></section>
@@ -63,7 +63,7 @@ const AddEmployee = props => {
           <section className="dataLabel dataItem">State:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="state" value={employeeData.state} /></section>
           <section className="dataLabel dataItem">Zip:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="zip" value={employeeData.zip} /></section>
           <section className="dataLabel dataItem">Salary:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="salary" value={employeeData.salary} /></section>
-          <section className="dataLabel dataItem">Gender:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="gender" value={employeeData.gender} /></section>
+          <section className="dataLabel dataItem">Gender:</section><section className="dataValue dataItem"><input type="radio" onChange={handleUpdateTextField} name="gender" value="Male" /> Male  <input type="radio" onChange={handleUpdateTextField} name="gender" value="Female" /> Female</section>
           <section className="dataLabel dataItem">Email:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="email" value={employeeData.email} /></section>
           <section className="dataLabel dataItem">Emergency contact:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="emergencyContactPerson" value={employeeData.emergencyContactPerson} /></section>
           <section className="dataLabel dataItem">Emergency contact phone:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="emergencyContactPhone" value={employeeData.emergencyContactPhone} /></section>

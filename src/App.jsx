@@ -14,11 +14,21 @@ const App = () => {
     setCurrentBusiness(e.target.value)
   }
 
+  //Capitalizes the first letter of string s
+  const toSentenceCase = s => {
+    return s
+      .split('')
+      .map((str, index) => {
+        return index === 0 ? str.toUpperCase() : str
+      })
+      .join('')
+  }
+
   // prettier-ignore
   return (
     <Router>
       <header>
-          <h1>Welcome to the {currentBusiness} Employee Directory</h1>
+          <h1>The {toSentenceCase(currentBusiness)} Employee Directory</h1>
         <nav>
           <ul className="navCont">
             <li className="navElem">

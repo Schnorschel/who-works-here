@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import moment from 'moment'
 
 const EmployeeDetail = props => {
   const [employeeData, setEmployeeData] = useState()
@@ -34,17 +35,18 @@ const EmployeeDetail = props => {
     if (obj === '') return false
     return true
   }
+
   // prettier-ignore
   return <>
-      {toDeleteEmployee ? <Redirect to={`/company/${props.match.params.bizName}/del-employee/${props.match.params.id}`} /> : null }
-      {toUpdateEmployee ? <Redirect to={`/company/${props.match.params.bizName}/upd-employee/${props.match.params.id}`} /> : null}
+      {toDeleteEmployee ? <Redirect to={`/company/` + encodeURIComponent(props.match.params.bizName) + `/del-employee/${props.match.params.id}`} /> : null }
+      {toUpdateEmployee ? <Redirect to={`/company/` + encodeURIComponent(props.match.params.bizName) + `/upd-employee/${props.match.params.id}`} /> : null}
       {employeeData && 
       <div className="employeeDetailCont">
         <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section>
         <section className="dataLabel dataItem">Name:</section><section className="dataValue dataItem">{employeeData.firstName} {employeeData.lastName}</section>
         <section className="dataLabel dataItem">Full time:</section><section className="dataValue dataItem">{ employeeData.isFullTime ? 'Yes' : 'No'}</section>
-        <section className="dataLabel dataItem">Birthday:</section><section className="dataValue dataItem">{employeeData.birthday}</section>
-        <section className="dataLabel dataItem">Hired date:</section><section className="dataValue dataItem">{employeeData.hiredDate}</section>
+        <section className="dataLabel dataItem">Birthday:</section><section className="dataValue dataItem">{moment(employeeData.birthday).format('MMMM Do, YYYY')}</section>
+        <section className="dataLabel dataItem">Hired date:</section><section className="dataValue dataItem">{moment(employeeData.hiredDate).format('MMMM Do, YYYY')}</section>
         <section className="dataLabel dataItem">Job title:</section><section className="dataValue dataItem">{employeeData.jobTitle}</section>
         <section className="dataLabel dataItem">Job description:</section><section className="dataValue dataItem">{employeeData.jobDescription}</section>
         <section className="dataLabel dataItem">Phone number:</section><section className="dataValue dataItem">{employeeData.phoneNumber}</section>

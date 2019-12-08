@@ -61,11 +61,12 @@ const UpdateEmployee = props => {
   //prettier-ignore
   return (
     <>
-      {toEmployeeDetail ? <Redirect to={`/company/${props.match.params.bizName}/employee/${props.match.params.id}`} /> : typeof employeeId === 'undefined' ? null : <div>An error occurred.</div>}
+      {toEmployeeDetail ? <Redirect to={`/company/` + encodeURIComponent(props.match.params.bizName) + `/employee/${props.match.params.id}`} /> : typeof employeeId === 'undefined' ? null : <div>An error occurred.</div>}
       <form onSubmit={handleSubmit}>
         <div className="employeeDetailCont">
           {/* <section className="dataLabel dataItem">Employee Id:</section><section className="dataValue dataItem">{employeeData.id}</section> */}
           <input type="hidden" name="id" value={props.match.params.id}></input>
+          {employeeData.profileImage && <><section className="dataLabel dataItem">&nbsp;</section><section className="dataValue dataItem"><img className="updateImage" src={employeeData.profileImage} /></section></>}
           <section className="dataLabel dataItem">First name:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="firstName" value={employeeData.firstName} /></section>
           <section className="dataLabel dataItem">Last name:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="lastName" value={employeeData.lastName} /></section>
           <section className="dataLabel dataItem">Full time:</section><section className="dataValue dataItem"><select name="isFullTime" onChange={handleUpdateTextField} value={employeeData.isFullTime}><option value="true">Yes</option><option value="false">No</option></select></section>
@@ -80,7 +81,7 @@ const UpdateEmployee = props => {
           <section className="dataLabel dataItem">State:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="state" value={employeeData.state} /></section>
           <section className="dataLabel dataItem">Zip:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="zip" value={employeeData.zip} /></section>
           <section className="dataLabel dataItem">Salary:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="salary" value={employeeData.salary} /></section>
-          <section className="dataLabel dataItem">Gender:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="gender" value={employeeData.gender} /></section>
+          <section className="dataLabel dataItem">Gender:</section><section className="dataValue dataItem"><input type="radio" onChange={handleUpdateTextField} name="gender" checked={employeeData.gender && employeeData.gender.toLowerCase() === 'male'} /> Male  <input type="radio" onChange={handleUpdateTextField} name="gender" checked={employeeData.gender && employeeData.gender.toLowerCase() === 'female'} /> Female</section>
           <section className="dataLabel dataItem">Email:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="email" value={employeeData.email} /></section>
           <section className="dataLabel dataItem">Emergency contact:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="emergencyContactPerson" value={employeeData.emergencyContactPerson} /></section>
           <section className="dataLabel dataItem">Emergency contact phone:</section><section className="dataValue dataItem"><input type="text" onChange={handleUpdateTextField} name="emergencyContactPhone" value={employeeData.emergencyContactPhone} /></section>

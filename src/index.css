@@ -15,6 +15,10 @@ body {
   min-height: 100%;
 }
 
+h1 {
+  margin-left: 1%;
+}
+
 .navCont {
   display: flex;
   list-style-type: none;
@@ -24,8 +28,24 @@ body {
   padding: 0 5px 0 0;
 }
 
+.businessesCont {
+  margin-left: 1%;
+}
+
 .employeePreviewCont {
-  width: 12.5%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 98%;
+  border: solid 1px black;
+  margin-left: 1%;
+  margin-top: 1%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.employeePreviewCont:last-child {
+  margin-right: 1%;
 }
 
 .allEmployeesCont {
@@ -34,13 +54,13 @@ body {
 }
 
 img {
-  width: 60px;
+  width: 100%;
 }
 
 .employeeDetailCont {
   display: flex;
   flex-wrap: wrap;
-  border: solid 1px black;
+  /* border: solid 1px black; */
 }
 
 .dataLabel {
@@ -50,8 +70,25 @@ img {
   font-weight: bold;
 }
 
+.dataLabel25 {
+  width: 25%;
+}
+
+.dataLabel65 {
+  width: 65%;
+}
+
+.dataLabel10 {
+  width: 10%;
+}
+
+.updateImage {
+  width: 200px;
+  padding-bottom: 5px;
+}
 .dataValue {
   width: 70%;
+  vertical-align: top;
 }
 
 .dataItem {
@@ -65,4 +102,56 @@ img {
 
 input[type='text'] {
   width: 200px;
+}
+
+.imgCont {
+  width: 20%;
+  padding-right: 5px;
+  /* border: 1px solid blue; */
+}
+
+.nameCont {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.emplName {
+  font-size: 2rem;
+  width: 85%;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+.emplId {
+  width: 15%;
+  /* border: 1px solid black; */
+  text-align: right;
+}
+
+.previewLabel {
+  padding-right: 2px;
+  width: 50%;
+  /* border: 1px solid black; */
+  text-align: right;
+  font-weight: bold;
+  margin-top: 0.5%;
+}
+
+.previewValue {
+  width: 50%;
+  margin-top: 0.5%;
+}
+
+@media (min-width: 750px) {
+  .employeePreviewCont {
+    width: 48.5%;
+  }
+}
+
+@media (min-width: 1450px) {
+  .employeePreviewCont {
+    width: 23.75%;
+  }
 }
